@@ -1,0 +1,486 @@
+/* responsiveness */
+
+@media only screen and (max-width: 1290px) {
+  .page-container {
+    /* padding: 24px 30px; */
+    padding: 0px 0px;
+  }
+
+  .box {
+    display: none;
+  }
+
+  .search-input {
+    display: none;
+  }
+
+  .parent-add {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .enroll-btn {
+    order: 1;
+  }
+
+  .filter-class {
+    order: 2;
+    margin-top: 26px;
+  }
+
+  .left-cnt {
+    background: #000;
+    border-radius: 2px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.7);
+    color: #fff !important;
+    /* padding: 10px 26px; */
+    height: 80px !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
+  }
+
+  .first {
+    order: 1 !important;
+  }
+
+  .second {
+    order: 2 !important;
+  }
+
+  .third {
+    order: 3 !important;
+  }
+
+  .bottom-link {
+    position: relative;
+    left: 0%;
+    transform: translateX(0%);
+    bottom: 0px;
+  }
+
+  .sidebar-links {
+    display: flex;
+    justify-content: space-around !important;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 0rem;
+    margin-left: 20px;
+    text-align: center;
+    margin-top: 0px;
+  }
+
+  .sidebar-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  .sidebar-links > li {
+    cursor: pointer;
+  }
+
+  .sidebar-links > li:not(:last-child) {
+    margin-bottom: 0rem;
+    margin-right: 3rem;
+  }
+
+  .sidebar-links > li:nth-child(3) {
+    margin-bottom: 0rem;
+    margin-right: 9rem;
+  }
+
+  .middle-sec {
+    margin-top: 20px !important;
+  }
+
+  .end-sec {
+    margin-top: 20px !important;
+  }
+
+  .search {
+    position: relative;
+    color: #aaa;
+    font-size: 16px;
+  }
+
+  .search {
+    display: inline-block;
+  }
+
+  .search input {
+    width: 260px;
+    height: 30px;
+    background: var(--primaryColor);
+    border: 1px solid #aaa;
+    border-radius: 40px;
+    box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+  }
+
+  .search input {
+    text-indent: 32px;
+  }
+  .search .fa-search {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+  }
+
+  .search .fa-search {
+    left: auto;
+    right: 230px;
+    bottom: 0px !important;
+  }
+
+  .clender {
+    margin-left: 0px;
+  }
+
+  .box-student {
+    background-color: var(--primaryColor);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around !important;
+    width: 100%;
+    align-items: center;
+  }
+
+  .box-student > div {
+    margin-top: 20px !important;
+  }
+
+  .fee-parent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-fee {
+    width: 140px;
+  }
+
+  .filter-class {
+    display: flex;
+    flex-direction: column;
+    justify-content: start !important;
+    align-items: start !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .left-sec {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .box {
+    display: none;
+  }
+
+  .right-sec {
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 30px;
+  }
+  .login-img-wrapper {
+    height: calc(40vh - 165px);
+  }
+  .image-login {
+    height: 325px;
+    width: 400px;
+    transform: translateX(-50%);
+  }
+  .right-content.signup {
+    width: 90%;
+  }
+
+  .form-reset {
+    width: 60% !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .input-box.country {
+    width: 100%;
+  }
+  .input-box.passport {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .box {
+    display: none;
+  }
+
+  .input-box.passport > label,
+  .input-box.passport > input {
+    width: 100%;
+    text-align: left !important;
+  }
+  .input-wrap {
+    flex-wrap: wrap;
+  }
+  .input-wrap.withmargin > .input-box:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  .registration-form {
+    height: auto;
+  }
+  .signup-btn {
+    position: inherit;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+  .password-field,
+  .password-confirm {
+    width: 100%;
+  }
+  .form-row {
+    margin-bottom: 15px;
+  }
+  .input-box.patient-age {
+    justify-content: flex-start;
+    left: 0;
+  }
+  .patient-age > input.form-control {
+    width: 100%;
+  }
+  .right-content,
+  .right-content.signup {
+    width: 90%;
+  }
+  .image-login {
+    height: 215px;
+    width: 197px;
+  }
+  .login-logo > img {
+    width: 30%;
+    height: 50%;
+  }
+  .login-img-wrapper {
+    height: calc(40vh - 107px);
+  }
+
+  .form-row > label,
+  .form-row > .input-wrap {
+    flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .page-container {
+    /* padding: 24px 30px; */
+    padding: 0px 0px;
+  }
+
+  .box {
+    display: none !important;
+  }
+
+  .left-cnt {
+    background: #000;
+    border-radius: 2px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.7);
+    color: #fff !important;
+    /* padding: 10px 26px; */
+    height: 90px !important;
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sidebar-links {
+    display: flex;
+    justify-content: space-around !important;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 0rem;
+    margin-left: 20px;
+    text-align: center;
+    margin-top: 0px;
+  }
+
+  .sidebar-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  .sidebar-links > li {
+    cursor: pointer;
+  }
+
+  .sidebar-links > li:not(:last-child) {
+    margin-bottom: 0rem;
+    margin-right: 2rem;
+  }
+
+  .sidebar-links > li:nth-child(3) {
+    margin-bottom: 0rem;
+    margin-right: 2rem;
+  }
+
+  /* .middle-sec {
+    margin-top: 20px !important;
+  } */
+
+  /* .end-sec {
+    margin-top: 20px !important;
+  } */
+
+  .search {
+    position: relative;
+    color: #aaa;
+    font-size: 16px;
+  }
+
+  .search {
+    display: inline-block;
+  }
+
+  .search input {
+    width: 160px;
+    height: 30px;
+    background: var(--primaryColor);
+    border: 1px solid #aaa;
+    border-radius: 40px;
+    box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+  }
+
+  .search input {
+    text-indent: 32px;
+  }
+  .search .fa-search {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+  }
+
+  .search .fa-search {
+    left: auto;
+    right: 130px;
+  }
+
+  .rightsidemydoctor {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .img-rightsidemydoctor {
+    max-width: 85% !important;
+    align-items: center !important;
+  }
+
+  /* .profile-top {
+    margin-top: 30px;
+  } */
+
+  /* .Message {
+    margin-bottom: 20px;
+  }
+
+  .Message-btn {
+    margin-left: 0px;
+  } */
+
+  .insurance {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .insurance-first {
+    margin-top: 20px;
+  }
+
+  .insurance-second {
+    margin-bottom: 20px;
+  }
+
+  .appointment-child-second {
+    margin-bottom: 20px !important;
+  }
+
+  .appointment-child-first {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .appointment {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .appointment-child-second {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .appointment-child-third {
+    margin-bottom: 20px !important;
+  }
+
+  .box {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* .end-sec-header {
+    position: relative;
+    right: 0px;
+  } */
+
+  .rate {
+    padding: 0px 7px 0px 7px;
+  }
+
+  .box {
+    text-align: center;
+    align-items: center;
+  }
+
+  .search-input {
+    margin-right: 25px !important;
+  }
+}
+
+@media only screen and (max-width: 699px) {
+  .box {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .img-rightsidemydoctor {
+    max-width: 80% !important;
+    align-items: center !important;
+  }
+
+  .search-input {
+    margin-right: 25px !important;
+  }
+
+  .box {
+    display: none !important;
+  }
+}

@@ -1,0 +1,842 @@
+:root {
+  --primaryColor: #f5f5f7;
+}
+
+html,
+body {
+  margin: 0;
+  background: rgb(250, 251, 254);
+  font-size: 16px !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.loader {
+  position: fixed;
+  background: rgb(0 0 0 / 38%);
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+.mt-26 {
+  margin-top: 26px;
+}
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.center {
+  align-items: center;
+}
+
+.between {
+  justify-content: space-between;
+}
+.end {
+  justify-content: flex-end;
+}
+
+label {
+  font-weight: 500;
+}
+
+.m-0 {
+  margin: 0;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.form-control,
+.form-control:focus {
+  appearance: none;
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid #ced4da !important;
+  border-radius: 8px;
+  color: #212529;
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0.375rem 0.75rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  width: 100%;
+  box-shadow: none !important;
+}
+.form-control[type="password"] {
+  padding-right: 3rem;
+}
+.form-control.input-err,
+.form-check-input.input-err {
+  border-color: red !important;
+}
+svg.icon-group-end {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+.form-control:focus {
+  background-color: #fff;
+  border-color: #86b7fe;
+  color: #212529;
+  outline: 0;
+}
+ul.password-helper {
+  list-style: none;
+  padding: 0;
+}
+.password-helper > li {
+  color: red;
+  padding-left: 15px;
+}
+.password-helper > li.complete {
+  color: green;
+}
+.password-helper > li > svg {
+  margin-right: 10px;
+}
+.form-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.form-row > label {
+  flex-basis: 28%;
+  position: relative;
+  padding-right: 15px;
+}
+
+label.required:after {
+  content: "*";
+  position: absolute;
+  color: red;
+  font-size: 1.5rem;
+  line-height: 30px;
+}
+
+.form-row > .input-wrap {
+  flex-basis: 72%;
+}
+
+.input-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-box {
+  width: 100%;
+  position: relative;
+}
+
+.input-wrap.withmargin > .input-box:not(:last-child) {
+  margin-right: 12px;
+}
+
+/* .err-msg {
+  position: absolute;
+  color: red !important;
+  bottom: -22px;
+} */
+
+input.form-check-input {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin: 0;
+}
+
+.input-box.radio-group {
+  display: flex;
+  align-items: center;
+}
+
+.radio-box {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.radio-box > div {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+}
+
+.radio-box > div > label {
+  margin-left: 10px;
+}
+
+.body {
+  margin-top: 3rem;
+}
+
+.header {
+  box-shadow: rgba(154, 161, 171, 0.15) 0px 0px 35px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}
+
+.submit,
+.submit:hover,
+.submit:focus {
+  padding: 3px 35px;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* login page css */
+.two-sec {
+  display: flex;
+  flex-wrap: wrap;
+}
+.left-sec {
+  background: rgb(77 28 115 / 33%);
+  width: 40%;
+  height: 100vh;
+  position: relative;
+  /* box-shadow: inset 0 0 0 768px rgb(77 28 115 / 33%);
+  background-size: cover;
+  background-position: 69% 190px;
+  background-repeat: no-repeat; */
+}
+.login-logo {
+  margin-left: 25px;
+  margin-top: 25px;
+}
+.login-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 165px);
+  border-radius: 50% !important;
+}
+.image-login {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 78%;
+  width: 50%;
+  transform: translateX(-50%);
+}
+.right-sec {
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.right-content {
+  width: 500px;
+}
+.right-content.signup {
+  width: 760px;
+}
+.login-input > input {
+  height: 50px;
+  background: #fbfbfb;
+  font-size: 1.2rem;
+}
+.login-input {
+  margin-bottom: 15px;
+  position: relative;
+}
+.err-msg {
+  margin-top: 5px;
+  color: red;
+}
+.registration-form .err-msg {
+  position: absolute;
+  top: 90%;
+  font-size: 0.9rem;
+}
+
+.right-content > h1 {
+  margin-bottom: 1.5rem;
+}
+.login-bottom > button.submit {
+  width: 100%;
+  font-size: 1.5rem;
+}
+.login-bottom > p {
+  font-size: 1.2rem;
+  text-align: center;
+}
+/* end login page */
+
+/* Registration */
+.wizard > ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wizard > ul > li {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+.wizard > ul > li:last-child {
+  flex: 0;
+}
+.wizard > ul > li > span {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.wizard > ul > li:not(:last-child)::after {
+  content: "";
+  height: 3px;
+  background: #ccc;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: -1;
+}
+.wizard > ul > li.active > span,
+.wizard > ul > li.visited > span {
+  background: green;
+  color: #fff;
+}
+.wizard > ul > li.active::after,
+.wizard > ul > li.visited::after {
+  background: green;
+}
+
+.registration-form {
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 8%) 0px 0px 35px 0px;
+  padding: 20px;
+  border: 1px solid #ededed;
+  height: 410px;
+  position: relative;
+}
+h3.registration-title {
+  margin-top: 40px;
+}
+.input-box.patient-age {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+  left: 23px;
+}
+.patient-age > input.form-control {
+  width: 40%;
+}
+.signup-btn {
+  position: absolute;
+  bottom: 25px;
+  right: 21px;
+}
+.input-box.country {
+  width: 45%;
+}
+.input-box.passport {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  flex-wrap: wrap;
+}
+.input-box.passport > label,
+.input-box.passport > input {
+  width: 50%;
+}
+.input-box.passport > .err-msg {
+  margin-left: 7rem;
+}
+/* End Registration */
+
+/* dashboard css */
+.page-container {
+  padding: 25px 30px;
+}
+
+/* .page-layout {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  grid-column-gap: 1.49rem;
+} */
+
+.left-cnt {
+  background: #000;
+  border-radius: 24px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.7);
+  color: #fff;
+  overflow-y: auto;
+  height: calc(100vh - 50px);
+  width: 100px !important;
+  position: relative;
+}
+
+section.right-cnt {
+  margin-top: 38px;
+}
+
+.bottom-link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 5rem;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.sidebar-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.sidebar-links > li {
+  cursor: pointer;
+}
+
+.sidebar-links > li:not(:last-child) {
+  margin-bottom: 4rem;
+}
+
+.sidebar-links > li:nth-child(3) {
+  margin-bottom: 12rem;
+}
+
+/* .right-cnt {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-column-gap: 64px;
+  margin-top: 4px;
+} */
+
+.end-sec {
+  margin-left: 20px;
+}
+
+.box {
+  background-color: var(--primaryColor);
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.box-student {
+  background-color: var(--primaryColor);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  align-items: center;
+}
+
+.box.illustration-box h3 {
+  font-size: 2.25rem;
+  margin-top: 30px;
+  line-height: 30px;
+  font-weight: 700;
+}
+.box.illustration-box p {
+  margin: 0;
+}
+.box.illustration-box svg {
+  position: absolute;
+  bottom: 0;
+  right: 105px;
+}
+.box.illustration-box {
+  height: 160px;
+  justify-content: flex-start;
+  padding-left: 30px;
+}
+.img-header {
+  height: 140px !important;
+  max-width: 60% !important;
+}
+
+.vists-sec {
+  margin-top: 25px;
+}
+.visit-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.visit-header > h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.tabbing {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+}
+.tabbing > li {
+  font-weight: 600;
+  cursor: pointer;
+}
+.tabbing > li:not(:last-child) {
+  margin-right: 3rem;
+}
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* .visit-details > h3 {
+  flex-basis: 73%;
+}
+.visit-details > .box-right {
+  display: flex;
+  justify-content: space-between;
+  flex: 27%;
+  align-items: center;
+}
+.visit-details:not(:last-child) {
+  margin-bottom: 25px;
+}
+.visit-details {
+  padding: 15px 39px;
+} */
+
+.vists-sec .accordion-item {
+  border: 0;
+}
+.vists-sec .accordion-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+.vists-sec .accordion-item .accordion-button {
+  background: #f5f5f7;
+  padding: 20px;
+  color: #000;
+  font-weight: bold;
+  box-shadow: none;
+  position: relative;
+  border-radius: 10px !important;
+  border: 1px solid #e7e3e3;
+}
+.vists-sec .accordion-item .accordion-button > span {
+  position: absolute;
+  right: 0;
+  width: 265px;
+}
+
+.vists-sec .accordion-body {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search {
+  position: relative;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.search {
+  display: inline-block;
+  width: 90%;
+}
+
+.search input {
+  width: 100%;
+  height: 40px;
+  background: var(--primaryColor);
+  border: 1px solid #aaa;
+  border-radius: 40px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+}
+
+.search input {
+  text-indent: 32px;
+}
+.search .fa-search {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.search .fa-search {
+  left: 15px;
+  bottom: 50px !important;
+}
+
+.notify {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  position: relative;
+  bottom: 12px;
+  right: 20px;
+}
+
+.card_rightside {
+  height: 96px;
+  width: 49%;
+  border-radius: 14px;
+  background: var(--primaryColor);
+  justify-content: center;
+}
+.search-input {
+  flex: 1;
+}
+.rightsidemydoctor {
+  /* height: 100px; */
+  width: 90%;
+  border-radius: 14px;
+  background: var(--primaryColor);
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.btnimg {
+  background: red;
+  pointer-events: none;
+  width: 250px;
+  height: 90px;
+  opacity: 1;
+  line-height: 90px;
+  text-align: center;
+}
+
+input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.msg {
+  display: flex;
+  border: 1px solid rgb(203, 193, 193);
+  border-left: 18px solid rgb(231, 71, 82);
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.appointment {
+  width: 100%;
+  border-radius: 14px;
+  background-color: var(--primaryColor);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.appointment-child-first > h4 {
+  font-weight: 700;
+}
+.appointment .btn-start {
+  width: 102px;
+}
+.btn-start {
+  height: 40px;
+  width: 120px;
+  border-radius: 8px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+}
+
+.Message {
+  height: 40px;
+  border-radius: 8px;
+  background-color: #000 !important;
+  color: white;
+  padding: 0px 20px 0px 20px;
+}
+
+.insurance {
+  width: 100%;
+  border-radius: 14px;
+  background-color: var(--primaryColor);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.insurance > div {
+  text-align: center;
+}
+
+.clender {
+  margin-left: 160px;
+}
+
+.end-sec-header {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+}
+
+.cardData {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rightsidemydoctor {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.appointment-child-second {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  color: #333;
+  cursor: default;
+}
+
+.dropdown .arrow {
+  border-color: #999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: " ";
+  display: block;
+  height: 0;
+  margin-top: 0.3rem;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 0;
+}
+
+.dropdown .arrow.open {
+  border-color: transparent transparent #999;
+  border-width: 0 5px 5px;
+}
+
+.dropdown .selected-value input {
+  line-height: 1.5;
+  font-size: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: default;
+  outline: none;
+  padding: 8px 52px 8px 10px;
+  transition: all 200ms ease;
+  width: 100%;
+}
+
+.dropdown .options {
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dropdown .options.open {
+  display: block;
+}
+
+.dropdown .option {
+  box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.8);
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+}
+
+.dropdown .option.selected,
+.dropdown .option:hover {
+  background-color: #f2f9fc;
+  color: #333;
+}
+
+.select-country {
+  border: 2px solid rgb(233, 227, 227);
+}
+.password-field {
+  width: 43%;
+}
+.password-confirm {
+  width: 48%;
+}
+
+.span-status {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.profile-img {
+  border-radius: 50% !important;
+}
+
+.form-floating > label {
+  color: rgb(123, 124, 127) !important;
+}
