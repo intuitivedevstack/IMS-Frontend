@@ -10,29 +10,7 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import Select from "react-select";
 import config from "@/utils/config";
-
-const options = [
-  { value: "All", label: "All" },
-  { value: "Nursery", label: "Nursery" },
-  { value: "LKG", label: "LKG" },
-  { value: "UKG", label: "UKG" },
-  { value: "1st", label: "1st" },
-  { value: "2nd", label: "2nd" },
-  { value: "3rd", label: "3rd" },
-  { value: "4th", label: "4th" },
-  { value: "5th", label: "5th" },
-  { value: "6th", label: "6th" },
-  { value: "7th", label: "7th" },
-  { value: "8th", label: "8th" },
-  { value: "9th", label: "9th" },
-  { value: "10th", label: "10th" },
-  { value: "11th-Science", label: "11th-Science" },
-  { value: "11th-Arts", label: "11th-Arts" },
-  { value: "11th-Commerce", label: "11th-Commerce" },
-  { value: "12th-Science", label: "12th-Science" },
-  { value: "12th-Arts", label: "12th-Arts" },
-  { value: "12th-Commerce", label: "12th-Commerce" },
-];
+import Footer from "@/components/footer";
 
 let decoded;
 if (typeof window !== "undefined") {
@@ -54,10 +32,24 @@ const AdminDashboard = () => {
   const [BackupstudentData, setBackupStudentData] = useState([]);
   const [BackupLength, setBackupLength] = useState(0);
 
-  const options = [{ value: "All", label: "All" }];
+  let options = [{ value: "All", label: "All" }];
 
   studentData.map((ele) => {
     options.push({ value: ele.class, label: ele.class });
+  });
+
+  const uniqueIds = [];
+
+  const unique = options.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element.value);
+
+    if (!isDuplicate) {
+      uniqueIds.push(element.value);
+
+      return true;
+    }
+
+    return false;
   });
 
   useEffect(() => {
@@ -364,7 +356,7 @@ const AdminDashboard = () => {
                     Filter by Class
                   </strong>
                   <Select
-                    options={options}
+                    options={unique}
                     placeholder="Select Class"
                     onChange={handleSelectChange}
                   />
@@ -390,6 +382,8 @@ const AdminDashboard = () => {
           </section>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

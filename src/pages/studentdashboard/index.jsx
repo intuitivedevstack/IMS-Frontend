@@ -8,6 +8,7 @@ import axios from "axios";
 import config from "@/utils/config";
 import { toast } from "react-hot-toast";
 import { Spinner } from "react-bootstrap";
+import Footer from "@/components/footer.jsx";
 
 let decoded;
 if (typeof window !== "undefined") {
@@ -217,6 +218,7 @@ const AdminDashboard = () => {
           </section>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

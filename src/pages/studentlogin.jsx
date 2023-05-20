@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { appActions } from "@/store/appSlice.js";
+import Footer from "@/components/footer.jsx";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -90,7 +91,7 @@ export default function Login() {
         </div>
         <div className="right-sec">
           <div className="right-content">
-            <h1>Student LogIn</h1>
+            <h3>Student LogIn</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="login-input">
                 <input
@@ -125,6 +126,8 @@ export default function Login() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

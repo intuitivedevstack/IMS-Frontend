@@ -7,6 +7,7 @@ import Image from "next/image";
 import profile from "../../assests/profile.png";
 import { toast } from "react-hot-toast";
 import { Spinner } from "react-bootstrap";
+import Footer from "@/components/footer.jsx";
 
 let decoded;
 if (typeof window !== "undefined") {
@@ -195,6 +196,7 @@ const AdminDashboard = () => {
           </section>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

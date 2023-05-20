@@ -8,6 +8,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import config from "@/utils/config";
 import Select from "react-select";
+import Footer from "@/components/footer.jsx";
 
 let decoded;
 if (typeof window !== "undefined") {
@@ -40,6 +41,20 @@ const AdminDashboard = () => {
 
   feeData.map((ele) => {
     options.push({ value: ele.payment_status, label: ele.payment_status });
+  });
+
+  const uniqueIds = [];
+
+  const unique = options.filter((element) => {
+    const isDuplicate = uniqueIds.includes(element.value);
+
+    if (!isDuplicate) {
+      uniqueIds.push(element.value);
+
+      return true;
+    }
+
+    return false;
   });
 
   const handleClose = () => setShow(false);
@@ -310,7 +325,7 @@ const AdminDashboard = () => {
                     Filter by Payment Status
                   </strong>
                   <Select
-                    options={options}
+                    options={unique}
                     placeholder="Select Payment Status"
                     onChange={handleSelectChange}
                   />
@@ -335,6 +350,7 @@ const AdminDashboard = () => {
           </section>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

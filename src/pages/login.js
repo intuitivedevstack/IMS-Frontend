@@ -9,6 +9,7 @@ import { Spinner } from "react-bootstrap";
 import config from "../utils/config.js";
 import Image from "next/image.js";
 import management from "../assests/management.jpg";
+import Footer from "@/components/footer.jsx";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -58,7 +59,7 @@ export default function Login() {
         </div>
         <div className="right-sec">
           <div className="right-content">
-            <h1>Admin LogIn</h1>
+            <h3>Admin LogIn</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="login-input">
                 <input
@@ -115,6 +116,8 @@ export default function Login() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

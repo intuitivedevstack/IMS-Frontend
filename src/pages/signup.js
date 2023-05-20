@@ -11,6 +11,7 @@ import * as yup from "yup";
 import config from "@/utils/config";
 import Image from "next/image";
 import management from "../assests/management.jpg";
+import Footer from "@/components/footer.jsx";
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -169,6 +170,8 @@ export default function Login() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }
