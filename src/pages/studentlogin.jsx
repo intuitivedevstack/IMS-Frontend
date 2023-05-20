@@ -43,6 +43,8 @@ export default function Login() {
   const onSubmit = (data) => {
     setLoading(true);
 
+    data.name = data.name.trim();
+
     let user;
     let userid;
     StudentData.map((ele) => {
