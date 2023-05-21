@@ -39,8 +39,11 @@ const AdminDashboard = () => {
 
   const options = [{ value: "All", label: "All" }];
 
-  feeData.map((ele) => {
-    options.push({ value: ele.payment_status, label: ele.payment_status });
+  feeData?.map((ele) => {
+    options.push({
+      value: ele.payment_status,
+      label: ele.payment_status,
+    });
   });
 
   const uniqueIds = [];
@@ -67,7 +70,7 @@ const AdminDashboard = () => {
       setFeeData(BackupfeeData);
     } else {
       const filteredData = feeData.filter((ele) =>
-        ele.payment_status.toLowerCase().includes(val.value.toLowerCase())
+        ele.payment_status.includes(val.value)
       );
 
       setFeeData(filteredData);
@@ -84,11 +87,11 @@ const AdminDashboard = () => {
         `${config.baseUrl}/api/getstudentsById?userid=${decoded.id}&&studentId=${id}`
       )
       .then((res) => {
-        setFeeData(res.data.findData.fees);
-        setBackupFeeData(res.data.findData.fees);
-        setStudent(res.data.findData.studentName);
+        setFeeData(res.data?.findData?.fees);
+        setBackupFeeData(res.data?.findData?.fees);
+        setStudent(res.data?.findData?.studentName);
       });
-  }, [id, isFeeAdded, isFeeDeleted]);
+  }, [id, isFeeAdded, isFeeDeleted, student == undefined]);
 
   useEffect(() => {
     setHasMounted(true);

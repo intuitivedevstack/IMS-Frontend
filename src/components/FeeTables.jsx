@@ -52,7 +52,7 @@ const PatientTables = ({ handleDeleteShow, feeData }) => {
               <td className="d-flex align-items-center">
                 <div
                   style={
-                    ele.payment_status == "Full (100%)"
+                    ele.payment_status.includes("100%")
                       ? { backgroundColor: "green" }
                       : { backgroundColor: "#fe86ae" }
                   }

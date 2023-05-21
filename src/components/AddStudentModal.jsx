@@ -41,7 +41,7 @@ const schema = yup
       .matches(phoneRegExp, "Phone number is not valid")
       .min(10, "too short")
       .max(10, "too long"),
-    class: yup.string().required("Class is a required field"),
+    class: yup.string().required("Class or Course Name is a required field"),
     rollNumber: yup.string().required("Roll Number is a required field"),
     address: yup.string().required("Address is a required field"),
   })
@@ -148,7 +148,7 @@ const Index = ({
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
                 type="text"
-                placeholder="Enter Class Name"
+                placeholder="Enter Class or Course Name"
                 {...register("class")}
               />
               <p style={{ color: "red" }}>{errors.class?.message}</p>

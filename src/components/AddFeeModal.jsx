@@ -21,20 +21,12 @@ if (typeof window !== "undefined") {
 
 console.log(decoded);
 
-const options = [
-  { value: "Full (100%)", label: "Full (100%)" },
-  { value: "Half (50%)", label: "Half (50%)" },
-  { value: "75%", label: "75%" },
-  { value: "25%", label: "25%" },
-  { value: "15%", label: "15%" },
-];
-
 const schema = yup
   .object({
     paid_amount: yup.string().required("Amount is a required field"),
     paid_month: yup.string().required("Paid Month is a required field"),
     deposited_date: yup.string().required("Deposited date is a required field"),
-    payment_status: yup.string().required("Deposited date is a required field"),
+    payment_status: yup.string().required("payment status is a required field"),
   })
   .required();
 
@@ -58,8 +50,6 @@ const Index = ({
   });
 
   const [loading, setLoading] = useState(false);
-  const [type, setType] = useState("text");
-  const [startDate, setStartDate] = useState(new Date());
 
   const onSubmit = (data) => {
     setLoading(true);
@@ -74,6 +64,8 @@ const Index = ({
     console.log(data);
 
     reset();
+
+    data.payment_status = `${data.payment_status}%`;
 
     axios
       .post(
@@ -125,7 +117,16 @@ const Index = ({
               <p style={{ color: "red" }}>{errors.paid_month?.message}</p>
             </Form.Group>
 
-            <Controller
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="number"
+                placeholder="Enter Payment Status, Example 100% or 50% or 25%"
+                {...register("payment_status")}
+              />
+              <p style={{ color: "red" }}>{errors.payment_status?.message}</p>
+            </Form.Group>
+
+            {/* <Controller
               name="payment_status"
               control={control}
               render={({ field: { onChange, value } }) => (
@@ -138,7 +139,7 @@ const Index = ({
                 />
               )}
             />
-            <p style={{ color: "red" }}>{errors.paid_status?.message}</p>
+            <p style={{ color: "red" }}>{errors.paid_status?.message}</p> */}
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <p className="mt-2">Deposited Date</p>
