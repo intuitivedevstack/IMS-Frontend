@@ -31,8 +31,8 @@ export default function Login() {
       .post(`${config.baseUrl}/auth/signin`, postData)
       .then((res) => {
         toast.success("Successfully Logged In !");
-        push("/admindashboard");
         localStorage.setItem("user", JSON.stringify(res.data.user));
+        push("/admindashboard");
       })
       .catch((err) => {
         toast.error(err?.response?.data?.message);
