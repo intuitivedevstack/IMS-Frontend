@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: "https://bs-ev1y.onrender.com",
+  baseUrl: "https://imb-phi.vercel.app",
 };
 
 export default config;
