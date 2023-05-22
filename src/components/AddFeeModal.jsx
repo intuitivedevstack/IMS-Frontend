@@ -16,7 +16,7 @@ import DatePicker from "react-datepicker";
 
 let decoded;
 if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
+  decoded = JSON.parse(localStorage.getItem("user"));
 }
 
 console.log(decoded);
@@ -65,11 +65,13 @@ const Index = ({
 
     reset();
 
-    data.payment_status = `${data.payment_status}%`;
+    if (!data.payment_status.includes("%")) {
+      data.payment_status = `${data.payment_status}%`;
+    }
 
     axios
       .post(
-        `${config.baseUrl}/api/postfee?userid=${decoded.id}&&studentId=${studentId}`,
+        `${config.baseUrl}/api/postfee?userid=${decoded._id}&&studentId=${studentId}`,
         data
       )
       .then((res) => {
@@ -119,27 +121,12 @@ const Index = ({
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
-                type="number"
+                type="text"
                 placeholder="Enter Payment Status, Example 100% or 50% or 25%"
                 {...register("payment_status")}
               />
               <p style={{ color: "red" }}>{errors.payment_status?.message}</p>
             </Form.Group>
-
-            {/* <Controller
-              name="payment_status"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <Select
-                  options={options}
-                  placeholder="Select Payment Status"
-                  className="mb-3"
-                  value={options.find((c) => c.value === value)}
-                  onChange={(val) => onChange(val.value)}
-                />
-              )}
-            />
-            <p style={{ color: "red" }}>{errors.paid_status?.message}</p> */}
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <p className="mt-2">Deposited Date</p>

@@ -14,7 +14,7 @@ import { Spinner } from "react-bootstrap";
 
 let decoded;
 if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
+  decoded = JSON.parse(localStorage.getItem("user"));
 }
 
 console.log(decoded);
@@ -77,7 +77,7 @@ const Index = ({
 
     axios
       .post(`${config.baseUrl}/api/students`, {
-        userid: decoded.id,
+        userid: decoded._id,
         studentdetails: resultant,
       })
       .then((res) => {

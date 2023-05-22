@@ -24,15 +24,15 @@ export default function Login() {
   const onSubmit = (data) => {
     setLoading(true);
     let postData = {
-      email: data.email,
-      password: data.password,
+      email: data.email.trim(),
+      password: data.password.trim(),
     };
     axios
       .post(`${config.baseUrl}/auth/signin`, postData)
       .then((res) => {
         toast.success("Successfully Logged In !");
         push("/admindashboard");
-        localStorage.setItem("access_token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
       })
       .catch((err) => {
         toast.error(err?.response?.data?.message);

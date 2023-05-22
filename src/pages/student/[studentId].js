@@ -11,7 +11,7 @@ import Footer from "@/components/footer.jsx";
 
 let decoded;
 if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
+  decoded = JSON.parse(localStorage.getItem("user"));
 }
 
 const AdminDashboard = () => {
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     axios
       .get(
-        `${config.baseUrl}/api/getstudentsById?userid=${decoded.id}&&studentId=${id}`
+        `${config.baseUrl}/api/getstudentsById?userid=${decoded._id}&&studentId=${id}`
       )
       .then((res) => {
         setStudentData(res.data.findData);
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
 
     axios
       .post(
-        `${config.baseUrl}/api/uploadphoto?userid=${decoded.id}&&studentId=${id}`,
+        `${config.baseUrl}/api/uploadphoto?userid=${decoded._id}&&studentId=${id}`,
         formData
       )
       .then(() => {

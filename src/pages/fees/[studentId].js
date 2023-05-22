@@ -12,7 +12,7 @@ import Footer from "@/components/footer.jsx";
 
 let decoded;
 if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
+  decoded = JSON.parse(localStorage.getItem("user"));
 }
 
 const AdminDashboard = () => {
@@ -84,7 +84,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     axios
       .get(
-        `${config.baseUrl}/api/getstudentsById?userid=${decoded.id}&&studentId=${id}`
+        `${config.baseUrl}/api/getstudentsById?userid=${decoded._id}&&studentId=${id}`
       )
       .then((res) => {
         setFeeData(res.data?.findData?.fees);

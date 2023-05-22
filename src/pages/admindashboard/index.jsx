@@ -14,7 +14,7 @@ import Footer from "@/components/footer";
 
 let decoded;
 if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
+  decoded = JSON.parse(localStorage.getItem("user"));
 }
 
 const AdminDashboard = () => {
@@ -34,7 +34,7 @@ const AdminDashboard = () => {
 
   let options = [{ value: "All", label: "All" }];
 
-  studentData.map((ele) => {
+  studentData?.map((ele) => {
     options.push({ value: ele.class, label: ele.class });
   });
 
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
     axios
       .get(
         `${config.baseUrl}/api/getstudentsByUserId?userid=${
-          decoded.id
+          decoded._id
         }&&limit=${10}&&page=${page}`
       )
       .then((res) => {

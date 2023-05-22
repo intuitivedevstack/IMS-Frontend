@@ -40,6 +40,10 @@ const Index = () => {
   });
   const onSubmit = (data) => {
     setLoading(true);
+
+    data.password = data.password.trim();
+    data.passwordConfirmation = data.passwordConfirmation.trim();
+
     axios
       .post(`${config.baseUrl}/auth/resetpassword/${token}`, data)
       .then(() => {

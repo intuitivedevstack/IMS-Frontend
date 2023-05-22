@@ -24,9 +24,10 @@ const Index = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+
     axios
       .post(`${config.baseUrl}/auth/resetpassword`, {
-        email,
+        email: email.trim(),
       })
       .then(() => {
         setShowAlert(true);

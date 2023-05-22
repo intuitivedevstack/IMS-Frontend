@@ -10,11 +10,6 @@ import { toast } from "react-hot-toast";
 import { Spinner } from "react-bootstrap";
 import Footer from "@/components/footer.jsx";
 
-let decoded;
-if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
-}
-
 const AdminDashboard = () => {
   const { push } = useRouter();
 
@@ -201,7 +196,7 @@ const AdminDashboard = () => {
                       <td className="d-flex align-items-center">
                         <div
                           style={
-                            ele.payment_status == "Full (100%)"
+                            ele.payment_status == "100%"
                               ? { backgroundColor: "green" }
                               : { backgroundColor: "#fe86ae" }
                           }
