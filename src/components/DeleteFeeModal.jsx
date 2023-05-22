@@ -6,11 +6,6 @@ import jwt_decode from "jwt-decode";
 import { toast } from "react-hot-toast";
 import config from "@/utils/config";
 
-let decoded;
-if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
-}
-
 function Example({
   showDelete,
   handleDeleteClose,
@@ -22,9 +17,14 @@ function Example({
   const handleDelete = () => {
     handleDeleteClose();
 
+    let decoded;
+    if (typeof window !== "undefined") {
+      decoded = JSON.parse(localStorage.getItem("user"));
+    }
+
     axios
       .delete(
-        `${config.baseUrl}/api/deletefeeById?userid=${decoded.id}&&studentId=${studentId}&&feeid=${feeid}`
+        `${config.baseUrl}/api/deletefeeById?userid=${decoded._id}&&studentId=${studentId}&&feeid=${feeid}`
       )
       .then((res) => {
         console.log(res.data);

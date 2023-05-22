@@ -10,11 +10,6 @@ import config from "@/utils/config";
 import Select from "react-select";
 import Footer from "@/components/footer.jsx";
 
-let decoded;
-if (typeof window !== "undefined") {
-  decoded = JSON.parse(localStorage.getItem("user"));
-}
-
 const AdminDashboard = () => {
   const { push } = useRouter();
   const router = useRouter();
@@ -82,6 +77,11 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
+    let decoded;
+    if (typeof window !== "undefined") {
+      decoded = JSON.parse(localStorage.getItem("user"));
+    }
+
     axios
       .get(
         `${config.baseUrl}/api/getstudentsById?userid=${decoded._id}&&studentId=${id}`

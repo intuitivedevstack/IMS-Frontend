@@ -1,15 +1,9 @@
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
-import jwt_decode from "jwt-decode";
 import { BsFillTrashFill } from "react-icons/bs";
 import Pagination from "react-bootstrap/Pagination";
 
-let decoded;
-if (typeof window !== "undefined") {
-  decoded = jwt_decode(localStorage.getItem("access_token"));
-}
-
-const PatientTables = ({ handleDeleteShow, feeData }) => {
+const FeeTables = ({ handleDeleteShow, feeData }) => {
   const [page, setPage] = useState(1);
 
   const resultantData = feeData?.slice((page - 1) * 10, page * 10);
@@ -37,7 +31,12 @@ const PatientTables = ({ handleDeleteShow, feeData }) => {
       <Table striped bordered hover className="mt-4" responsive="md">
         <thead>
           <tr>
+            <th>Tuition Fee</th>
+            <th>Transport Fee</th>
+            <th>Examination Fee</th>
+            <th>Total Amount</th>
             <th>Amount Paid</th>
+            <th>Amount Due</th>
             <th>Paid Months</th>
             <th>Payment Status</th>
             <th>Deposited Date</th>
@@ -47,7 +46,19 @@ const PatientTables = ({ handleDeleteShow, feeData }) => {
         <tbody>
           {resultantData?.map((ele) => (
             <tr key={ele.id}>
+              <td>{ele.tuition_fee + " rs"}</td>
+              <td>{ele.transport_fee + " rs"}</td>
+              <td>{ele.examination_fee + " rs"}</td>
+              <td>
+                {Number(ele.tuition_fee) +
+                  Number(ele.transport_fee) +
+                  Number(ele.examination_fee) +
+                  " rs"}
+              </td>
+
               <td>{`${ele.paid_amount} rs`}</td>
+              <td>{ele.due + " rs"}</td>
+
               <td>{ele.paid_month}</td>
               <td className="d-flex align-items-center">
                 <div
@@ -79,4 +90,4 @@ const PatientTables = ({ handleDeleteShow, feeData }) => {
   );
 };
 
-export default PatientTables;
+export default FeeTables;

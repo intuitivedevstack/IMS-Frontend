@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import jwt_decode from "jwt-decode";
 import Table from "react-bootstrap/Table";
 import Image from "next/image";
 import profile from "../../assests/profile.png";
@@ -182,7 +181,12 @@ const AdminDashboard = () => {
               <Table striped bordered hover responsive="md" className="mt-5">
                 <thead>
                   <tr>
+                    <th>Tuition Fee</th>
+                    <th>Transport Fee</th>
+                    <th>Examination Fee</th>
+                    <th>Total Amount</th>
                     <th>Amount Paid</th>
+                    <th>Amount Due</th>
                     <th>Paid Months</th>
                     <th>Payment Status</th>
                     <th>Deposited Date</th>
@@ -191,12 +195,24 @@ const AdminDashboard = () => {
                 <tbody>
                   {studentData.fees?.map((ele) => (
                     <tr key={ele.id}>
+                      <td>{ele.tuition_fee + " rs"}</td>
+                      <td>{ele.transport_fee + " rs"}</td>
+                      <td>{ele.examination_fee + " rs"}</td>
+                      <td>
+                        {Number(ele.tuition_fee) +
+                          Number(ele.transport_fee) +
+                          Number(ele.examination_fee) +
+                          " rs"}
+                      </td>
+
                       <td>{`${ele.paid_amount} rs`}</td>
+                      <td>{ele.due + " rs"}</td>
+
                       <td>{ele.paid_month}</td>
                       <td className="d-flex align-items-center">
                         <div
                           style={
-                            ele.payment_status == "100%"
+                            ele.payment_status.includes("100%")
                               ? { backgroundColor: "green" }
                               : { backgroundColor: "#fe86ae" }
                           }

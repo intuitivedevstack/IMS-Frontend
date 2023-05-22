@@ -21,14 +21,15 @@ if (typeof window !== "undefined") {
 
 console.log(decoded);
 
-const schema = yup
-  .object({
-    paid_amount: yup.string().required("Amount is a required field"),
-    paid_month: yup.string().required("Paid Month is a required field"),
-    deposited_date: yup.string().required("Deposited date is a required field"),
-    payment_status: yup.string().required("payment status is a required field"),
-  })
-  .required();
+const schema = yup.object({
+  paid_amount: yup.string().required("Amount is a required field"),
+  paid_month: yup.string().required("Paid Month is a required field"),
+  deposited_date: yup.string().required("Deposited date is a required field"),
+  payment_status: yup.string().required("payment status is a required field"),
+  tuition_fee: yup.string().required("Tuition Fee is a required field"),
+  transport_fee: yup.string(),
+  examination_fee: yup.string(),
+});
 
 const Index = ({
   handleClose,
@@ -69,6 +70,12 @@ const Index = ({
       data.payment_status = `${data.payment_status}%`;
     }
 
+    let total =
+      Number(data?.tuition_fee) +
+      Number(data?.transport_fee) +
+      Number(data?.examination_fee);
+
+    data.due = total - Number(data.paid_amount);
     axios
       .post(
         `${config.baseUrl}/api/postfee?userid=${decoded._id}&&studentId=${studentId}`,
@@ -101,6 +108,33 @@ const Index = ({
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Tuition Fee"
+                {...register("tuition_fee")}
+              />
+              <p style={{ color: "red" }}>{errors.tuition_fee?.message}</p>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Transport Fee"
+                {...register("transport_fee")}
+              />
+              <p style={{ color: "red" }}>{errors.transport_fee?.message}</p>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Examination Fee"
+                {...register("examination_fee")}
+              />
+              <p style={{ color: "red" }}>{errors.examination_fee?.message}</p>
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
                 type="text"

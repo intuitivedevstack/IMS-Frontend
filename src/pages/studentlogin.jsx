@@ -10,8 +10,6 @@ import Image from "next/image.js";
 import management from "../assests/management.jpg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import { appActions } from "@/store/appSlice.js";
 import Footer from "@/components/footer.jsx";
 
 const phoneRegExp =
@@ -48,9 +46,9 @@ export default function Login() {
 
     let user;
     let userid;
-    StudentData.map((ele) => {
+    user = StudentData.find((ele) => {
       userid = ele.userid;
-      user = ele.students.find((ele) => {
+      return ele.students.find((ele) => {
         return (
           ele.parentNumber == String(data.parent_number) &&
           ele.studentName == data.name
@@ -58,7 +56,14 @@ export default function Login() {
       });
     });
 
-    localStorage.setItem("studentData", JSON.stringify(user));
+    let userData = user.students.find((ele) => {
+      return (
+        ele.parentNumber == String(data.parent_number) &&
+        ele.studentName == data.name
+      );
+    });
+
+    localStorage.setItem("studentData", JSON.stringify(userData));
     localStorage.setItem("userid", JSON.stringify(userid));
 
     if (user) {
