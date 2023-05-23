@@ -2,7 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["example.com", "localhost", "bs-ev1y.onrender.com"],
+    domains: [
+      "example.com",
+      "localhost",
+      "imb-phi.vercel.app",
+      "imb.onrender.com",
+    ],
   },
 };
 

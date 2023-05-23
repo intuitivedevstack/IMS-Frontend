@@ -47,8 +47,10 @@ const FeeTables = ({ handleDeleteShow, feeData }) => {
           {resultantData?.map((ele) => (
             <tr key={ele.id}>
               <td>{ele.tuition_fee + " rs"}</td>
-              <td>{ele.transport_fee + " rs"}</td>
-              <td>{ele.examination_fee + " rs"}</td>
+              <td>{ele.transport_fee != "" && ele.transport_fee + " rs"}</td>
+              <td>
+                {ele.examination_fee != "" && ele.examination_fee + " rs"}
+              </td>
               <td>
                 {Number(ele.tuition_fee) +
                   Number(ele.transport_fee) +
