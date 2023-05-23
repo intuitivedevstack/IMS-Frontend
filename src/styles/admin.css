@@ -9,10 +9,10 @@
   font-size: 16px;
 }
 
-.search-patient {
+/* .search-patient {
   display: inline-block;
   width: 90%;
-}
+} */
 
 .search-patient .input-patient {
   width: 35.5% !important;

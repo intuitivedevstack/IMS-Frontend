@@ -6,11 +6,11 @@ import StudentTables from "@/components/StudentTables";
 import Button from "react-bootstrap/Button";
 import AddStudentModal from "../../components/AddStudentModal";
 import DeleteStudentModal from "../../components/DeleteStudentModal";
-import jwt_decode from "jwt-decode";
 import axios from "axios";
 import Select from "react-select";
 import config from "@/utils/config";
 import Footer from "@/components/footer";
+import Link from "next/link";
 
 const AdminDashboard = () => {
   const { push } = useRouter();
@@ -337,6 +337,7 @@ const AdminDashboard = () => {
                   </defs>
                 </svg>
               </div>
+
               <div className="d-flex justify-content-between mt-3 parent-add">
                 <div className="search-input">
                   <div className="search-patient">
@@ -361,9 +362,23 @@ const AdminDashboard = () => {
                   />
                 </div>
 
-                <div className="enroll-btn">
+                <div className="enroll-btn me-4">
                   <Button variant="success" onClick={handleShow}>
                     Enroll New Student
+                  </Button>
+                </div>
+
+                <div className="me-4">
+                  <Link href={"https://rajatdev1.github.io/exam-section/"}>
+                    <Button variant="success" style={{ cursor: "pointer" }}>
+                      Examination
+                    </Button>
+                  </Link>
+                </div>
+
+                <div>
+                  <Button variant="success" style={{ cursor: "pointer" }}>
+                    Send Message
                   </Button>
                 </div>
               </div>
