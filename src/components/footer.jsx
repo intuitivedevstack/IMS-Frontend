@@ -14,7 +14,7 @@ const footer = () => {
           <div className="legal__links">
             <a
               className="footer__btn"
-              href="mailto:ajaykumarjha05072000@gmail.com"
+              href="mailto:intuitivedevstack@gmail.com"
             >
               Email Us
             </a>

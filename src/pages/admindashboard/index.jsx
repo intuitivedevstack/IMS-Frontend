@@ -377,21 +377,24 @@ const AdminDashboard = () => {
                   />
                 </div>
 
-                <div className="enroll-btn me-4">
+                <div className="enroll-btn me-4 sm">
                   <Button variant="success" onClick={handleShow}>
                     Enroll New Student
                   </Button>
                 </div>
 
                 <div className="me-4">
-                  <Link href={"https://rajatdev1.github.io/exam-section/"}>
+                  <Link
+                    href={"https://rajatdev1.github.io/exam-section/"}
+                    target="_blank"
+                  >
                     <Button variant="success" style={{ cursor: "pointer" }}>
                       Examination
                     </Button>
                   </Link>
                 </div>
 
-                <div>
+                <div className="sm">
                   <Button
                     variant="success"
                     style={{ cursor: "pointer" }}
