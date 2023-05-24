@@ -178,7 +178,12 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              <Table striped bordered hover responsive="md" className="mt-5">
+              <div className="msg-div mt-4">
+                <strong className="ms-2">Message</strong>
+                <p className="ms-2">{studentData.msg}</p>
+              </div>
+
+              <Table striped bordered hover responsive="md" className="mt-4">
                 <thead>
                   <tr>
                     <th>Tuition Fee</th>

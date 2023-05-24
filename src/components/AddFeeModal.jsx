@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import config from "@/utils/config";
@@ -25,7 +23,6 @@ const schema = yup.object({
   paid_amount: yup.string().required("Amount is a required field"),
   paid_month: yup.string().required("Paid Month is a required field"),
   deposited_date: yup.string().required("Deposited date is a required field"),
-  payment_status: yup.string().required("payment status is a required field"),
   tuition_fee: yup.string().required("Tuition Fee is a required field"),
   transport_fee: yup.string(),
   examination_fee: yup.string(),
@@ -66,16 +63,16 @@ const Index = ({
 
     reset();
 
-    if (!data.payment_status.includes("%")) {
-      data.payment_status = `${data.payment_status}%`;
-    }
-
     let total =
       Number(data?.tuition_fee) +
       Number(data?.transport_fee) +
       Number(data?.examination_fee);
 
+    let per = (Number(data.paid_amount) / total) * 100;
+
     data.due = total - Number(data.paid_amount);
+    data.payment_status = String(Math.floor(per)) + "%";
+
     axios
       .post(
         `${config.baseUrl}/api/postfee?userid=${decoded._id}&&studentId=${studentId}`,
@@ -151,15 +148,6 @@ const Index = ({
                 {...register("paid_month")}
               />
               <p style={{ color: "red" }}>{errors.paid_month?.message}</p>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control
-                type="text"
-                placeholder="Enter Payment Status, Example 100% or 50% or 25%"
-                {...register("payment_status")}
-              />
-              <p style={{ color: "red" }}>{errors.payment_status?.message}</p>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">

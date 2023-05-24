@@ -2,7 +2,6 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import { toast } from "react-hot-toast";
 import config from "@/utils/config";
 
