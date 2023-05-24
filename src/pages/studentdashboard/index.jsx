@@ -13,9 +13,9 @@ const AdminDashboard = () => {
   const { push } = useRouter();
 
   const [hasMounted, setHasMounted] = useState(false);
-  const [url, setUrl] = useState(null);
   const [isUpload, setIsUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
 
   let studentData;
   let userid;
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
         `${config.baseUrl}/api/getstudentsById?userid=${userid}&&studentId=${studentData.id}`
       )
       .then((res) => {
-        setUrl(res.data.findData?.photo?.url);
+        setData(res.data.findData?.photo?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -109,9 +109,9 @@ const AdminDashboard = () => {
               <div className="box-student">
                 <div>
                   <label htmlFor="file">
-                    {url != null ? (
+                    {data != null ? (
                       <Image
-                        src={url}
+                        src={`data:image;base64,${data.toString("base64")}`}
                         alt="img"
                         style={{ borderRadius: "5%" }}
                         height={120}

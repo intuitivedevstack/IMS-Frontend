@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   const [hasMounted, setHasMounted] = useState(false);
   const [studentData, setStudentData] = useState({});
   const [isUpload, setIsUploaded] = useState(false);
-  const [url, setUrl] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleLogout = () => {
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
       )
       .then((res) => {
         setStudentData(res.data.findData);
-        setUrl(res.data.findData?.photo?.url);
+        setData(res.data.findData?.photo?.data);
       });
   }, [id, isUpload, studentData?.studentName == undefined]);
 
@@ -124,9 +124,9 @@ const AdminDashboard = () => {
               <div className="box-student">
                 <div>
                   <label htmlFor="file">
-                    {url != null ? (
+                    {data != null ? (
                       <Image
-                        src={url}
+                        src={`data:image;base64,${data.toString("base64")}`}
                         alt="img"
                         style={{ borderRadius: "5%" }}
                         height={120}
