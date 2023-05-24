@@ -50,7 +50,7 @@ const AdminDashboard = () => {
 
     axios
       .post(
-        `${config.baseUrl}/api/uploadphoto?userid=${decoded._id}&&studentId=${id}`,
+        `${config.imgUrl}/api/uploadphoto?userid=${decoded._id}&&studentId=${id}`,
         formData
       )
       .then(() => {
