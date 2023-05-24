@@ -46,7 +46,7 @@ const AdminDashboard = () => {
 
     axios
       .post(
-        `https://imb.onrender.com/api/uploadphoto?userid=${userid}&&studentId=${studentData.id}`,
+        `${config.imgBaseUrl}/api/uploadphoto?userid=${userid}&&studentId=${studentData.id}`,
         formData
       )
       .then(() => {
