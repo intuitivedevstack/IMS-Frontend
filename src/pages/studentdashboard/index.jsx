@@ -24,6 +24,8 @@ const AdminDashboard = () => {
     userid = JSON.parse(localStorage.getItem("userid"));
   }
 
+  const pdfurl = `data:application/pdf;base64,${studentData?.pdf?.data}`;
+
   useEffect(() => {
     axios
       .get(
@@ -178,11 +180,6 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
-              <div className="msg-div mt-4">
-                <strong className="ms-2">Message</strong>
-                <p className="ms-2">{studentData.msg}</p>
-              </div>
-
               <Table striped bordered hover responsive="md" className="mt-4">
                 <thead>
                   <tr>
@@ -235,10 +232,29 @@ const AdminDashboard = () => {
                   ))}
                 </tbody>
               </Table>
+
+              <div className="msg-div mt-4">
+                <strong className="ms-2">Message</strong>
+                <p className="ms-2">{studentData.msg}</p>
+
+                <p className="ms-2">
+                  Please Download the File
+                  <a
+                    href={pdfurl}
+                    target="_blank"
+                    download={studentData.pdf.fileName}
+                    rel="noopener noreferrer"
+                    className="ms-2"
+                  >
+                    {studentData.pdf.fileName}
+                  </a>
+                </p>
+              </div>
             </div>
           </section>
         </div>
       </div>
+
       <Footer />
     </>
   );

@@ -27,6 +27,7 @@
     "react-hook-form": "^7.43.9",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
+    "react-pdf": "^7.0.1",
     "react-phone-number-input": "^3.2.23",
     "react-redux": "^8.0.5",
     "react-select": "^5.7.2",

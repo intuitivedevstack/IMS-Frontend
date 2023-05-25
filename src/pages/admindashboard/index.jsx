@@ -11,7 +11,6 @@ import Select from "react-select";
 import config from "@/utils/config";
 import Footer from "@/components/footer";
 import Link from "next/link";
-import SendMessageModal from "../../components/SendMessageModal";
 
 const AdminDashboard = () => {
   const { push } = useRouter();
@@ -27,14 +26,6 @@ const AdminDashboard = () => {
   const [totalStudentData, setTotalStudentData] = useState([]);
   const [BackupstudentData, setBackupStudentData] = useState([]);
   const [BackupLength, setBackupLength] = useState(0);
-
-  const [showMsg, setShowMsg] = useState(false);
-
-  const handleCloseMsg = () => setShowMsg(false);
-  const handleShowMsg = () => {
-    setShowMsg(true);
-    console.log("fire");
-  };
 
   let options = [{ value: "All", label: "All" }];
 
@@ -148,12 +139,6 @@ const AdminDashboard = () => {
         studentId={studentId}
         setIsStudentDeleted={setIsStudentDeleted}
         isStudentDeleted={isStudentDeleted}
-      />
-
-      <SendMessageModal
-        showMsg={showMsg}
-        handleCloseMsg={handleCloseMsg}
-        setShowMsg={setShowMsg}
       />
 
       <div className="page-container">
@@ -398,7 +383,7 @@ const AdminDashboard = () => {
                   <Button
                     variant="success"
                     style={{ cursor: "pointer" }}
-                    onClick={handleShowMsg}
+                    onClick={() => push("/sendmsg")}
                   >
                     Send Message
                   </Button>
