@@ -51,7 +51,7 @@ export default function Login() {
       return ele.students.find((ele) => {
         return (
           ele.parentNumber == String(data.parent_number) &&
-          ele.studentName == data.name
+          ele.studentName.toLowerCase() == data.name.toLowerCase()
         );
       });
     });

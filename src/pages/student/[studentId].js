@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import config from "@/utils/config";
 import Image from "next/image";
 import profile from "../../assests/profile.png";
@@ -50,7 +49,7 @@ const AdminDashboard = () => {
 
     axios
       .post(
-        `${config.imgUrl}/api/uploadphoto?userid=${decoded._id}&&studentId=${id}`,
+        `${config.baseUrl}/api/uploadphoto?userid=${decoded._id}&&studentId=${id}`,
         formData
       )
       .then(() => {
