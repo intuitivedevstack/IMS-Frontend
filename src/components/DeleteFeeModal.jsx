@@ -8,7 +8,6 @@ import config from "@/utils/config";
 function Example({
   showDelete,
   handleDeleteClose,
-  studentId,
   isFeeDeleted,
   setIsFeeDeleted,
   feeid,
@@ -16,17 +15,9 @@ function Example({
   const handleDelete = () => {
     handleDeleteClose();
 
-    let decoded;
-    if (typeof window !== "undefined") {
-      decoded = JSON.parse(localStorage.getItem("user"));
-    }
-
     axios
-      .delete(
-        `${config.baseUrl}/api/deletefeeById?userid=${decoded._id}&&studentId=${studentId}&&feeid=${feeid}`
-      )
+      .delete(`${config.baseUrl}/api/deletefeeById?feeid=${feeid}`)
       .then((res) => {
-        console.log(res.data);
         toast.success("Deleted !");
         setIsFeeDeleted(!isFeeDeleted);
       })

@@ -8,11 +8,6 @@ import { toast } from "react-hot-toast";
 import { Spinner } from "react-bootstrap";
 import Footer from "@/components/footer.jsx";
 
-let decoded;
-if (typeof window !== "undefined") {
-  decoded = JSON.parse(localStorage.getItem("user"));
-}
-
 const AdminDashboard = () => {
   const { push } = useRouter();
   const router = useRouter();
@@ -31,13 +26,17 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `${config.baseUrl}/api/getstudentsById?userid=${decoded._id}&&studentId=${id}`
-      )
+      .get(`${config.baseUrl}/api/getstudentsById?studentId=${id}`)
       .then((res) => {
         setStudentData(res.data.findData);
-        setData(res.data.findData?.photo?.data);
       });
+  }, [id, isUpload, studentData?.studentName == undefined]);
+
+  useEffect(() => {
+    axios.get(`${config.baseUrl}/api/getfile?studentId=${id}`).then((res) => {
+      setData(res.data?.data?.photo?.data);
+      console.log(res.data);
+    });
   }, [id, isUpload, studentData?.studentName == undefined]);
 
   const handleUpload = (e) => {
@@ -48,10 +47,7 @@ const AdminDashboard = () => {
     formData.append("photo", file);
 
     axios
-      .post(
-        `${config.baseUrl}/api/uploadphoto?userid=${decoded._id}&&studentId=${id}`,
-        formData
-      )
+      .post(`${config.baseUrl}/api/uploadphoto?studentId=${id}`, formData)
       .then(() => {
         toast.success("Uploaded !");
         setIsUploaded(!isUpload);
@@ -125,7 +121,7 @@ const AdminDashboard = () => {
                   <label htmlFor="file">
                     {data != null ? (
                       <Image
-                        src={`data:image;base64,${data.toString("base64")}`}
+                        src={`data:image;base64,${data}`}
                         alt="img"
                         style={{ borderRadius: "5%" }}
                         height={120}
@@ -161,7 +157,7 @@ const AdminDashboard = () => {
 
                   <div>
                     <strong>Class</strong>
-                    <span> {studentData?.class}</span>
+                    <span> {studentData?.cls}</span>
                   </div>
 
                   <div>

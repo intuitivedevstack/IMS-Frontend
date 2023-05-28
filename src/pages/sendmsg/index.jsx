@@ -9,41 +9,50 @@ import { toast } from "react-hot-toast";
 import { Spinner } from "react-bootstrap";
 import Footer from "@/components/footer";
 import { useRouter } from "next/navigation";
+import Toast from "react-bootstrap/Toast";
 
 function Example() {
   const [totalStudentData, setTotalStudentData] = useState([]);
   const [classVal, setClassVal] = useState("");
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+  const [fileshow, setFileShow] = useState(false);
 
   const { push } = useRouter();
 
   const handleUpload = (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("pdf", file);
+    const fileSize = e.target.files[0].size;
+    const fileMb = fileSize / 1024 ** 2;
 
-    formData.append("classVal", JSON.stringify(classVal));
-
-    let decoded;
-    if (typeof window !== "undefined") {
-      decoded = JSON.parse(localStorage.getItem("user"));
+    if (classVal == "") {
+      setShow(true);
+      e.target.value = null;
+      return;
+    } else if (fileMb >= 2) {
+      setFileShow(true);
+      e.target.value = null;
+      return;
+    } else {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append("pdf", file);
+      formData.append("classVal", JSON.stringify(classVal));
+      axios
+        .post(`${config.baseUrl}/api/postpdf`, formData)
+        .then(() => {
+          console.log("uploaded !");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-
-    axios
-      .post(`${config.baseUrl}/api/postpdf?userid=${decoded._id}`, formData)
-      .then(() => {
-        console.log("uploaded !");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   let options = [{ value: "All", label: "All" }];
 
   totalStudentData?.map((ele) => {
-    options.push({ value: ele.class, label: ele.class });
+    options.push({ value: ele.cls, label: ele.cls });
   });
 
   const uniqueIds = [];
@@ -65,12 +74,8 @@ function Example() {
   };
 
   useEffect(() => {
-    let decoded;
-    if (typeof window !== "undefined") {
-      decoded = JSON.parse(localStorage.getItem("user"));
-    }
     axios
-      .get(`${config.baseUrl}/api/getstudentsByUserId?userid=${decoded._id}`)
+      .get(`${config.baseUrl}/api/getstudentsByUserId`)
       .then((res) => {
         setTotalStudentData(res.data.data);
       })
@@ -84,13 +89,8 @@ function Example() {
 
     setLoading(true);
 
-    let decoded;
-    if (typeof window !== "undefined") {
-      decoded = JSON.parse(localStorage.getItem("user"));
-    }
-
     axios
-      .post(`${config.baseUrl}/api/postmsg?userid=${decoded._id}`, {
+      .post(`${config.baseUrl}/api/postmsg`, {
         classVal,
         msg,
       })
@@ -114,6 +114,7 @@ function Example() {
           <Spinner animation="border" role="status"></Spinner>
         </div>
       )}
+
       <div className="page-container">
         <div className="page-layout row">
           <div className="left-cnt col-1 mx-auto">
@@ -163,6 +164,22 @@ function Example() {
                   className="mb-3"
                 />
 
+                <div className="d-flex mb-3">
+                  <Toast
+                    onClose={() => setShow(false)}
+                    show={show}
+                    delay={4000}
+                    autohide
+                    style={{ height: "40px" }}
+                  >
+                    <Toast.Header>
+                      <strong className="me-auto text-danger fs-5">
+                        First Select Class Please
+                      </strong>
+                    </Toast.Header>
+                  </Toast>
+                </div>
+
                 <FloatingLabel
                   controlId="floatingTextarea2"
                   className="mb-3"
@@ -181,7 +198,23 @@ function Example() {
                   <Form.Control type="file" onChange={handleUpload} />
                 </Form.Group>
 
-                <div className="mx-auto d-flex justify-content-center align-items-center">
+                <div className="mb-4">
+                  <Toast
+                    onClose={() => setFileShow(false)}
+                    show={fileshow}
+                    delay={6000}
+                    autohide
+                    style={{ height: "40px", width: "320px" }}
+                  >
+                    <Toast.Header>
+                      <strong className="me-auto text-danger fs-5">
+                        Select a file less than 2 MB.
+                      </strong>
+                    </Toast.Header>
+                  </Toast>
+                </div>
+
+                <div className="mx-auto d-flex justify-content-center align-items-center msg-sm-btn">
                   <Button
                     variant="success"
                     type="submit"

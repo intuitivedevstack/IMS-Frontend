@@ -43,24 +43,24 @@ const StudentTables = ({
         </thead>
         <tbody>
           {studentData?.map((ele) => (
-            <tr key={ele.id}>
+            <tr key={ele._id}>
               <td>{ele.studentName}</td>
               <td>{ele.parentName}</td>
-              <td>{ele.class}</td>
+              <td>{ele.cls}</td>
               <td>
-                <Link href={`/student/${ele.id}`} style={{ color: "#6b88d6" }}>
+                <Link href={`/student/${ele._id}`} style={{ color: "#6b88d6" }}>
                   View Student Details
                 </Link>
               </td>
               <td>
-                <Link href={`/fees/${ele.id}`} style={{ color: "#6b88d6" }}>
+                <Link href={`/fees/${ele._id}`} style={{ color: "#6b88d6" }}>
                   View Fees Statement
                 </Link>
               </td>
               <td>
                 <BsFillTrashFill
                   cursor={"pointer"}
-                  onClick={() => handleDeleteShow(ele.id)}
+                  onClick={() => handleDeleteShow(ele._id)}
                 />
               </td>
             </tr>

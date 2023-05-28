@@ -5,7 +5,6 @@ import AddFeeModal from "../../components/AddFeeModal";
 import DeleteFeeModal from "../../components/DeleteFeeModal";
 import FeeTables from "../../components/FeeTables";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 import config from "@/utils/config";
 import Select from "react-select";
 import Footer from "@/components/footer.jsx";
@@ -77,20 +76,18 @@ const AdminDashboard = () => {
   };
 
   useEffect(() => {
-    let decoded;
-    if (typeof window !== "undefined") {
-      decoded = JSON.parse(localStorage.getItem("user"));
-    }
-
     axios
-      .get(
-        `${config.baseUrl}/api/getstudentsById?userid=${decoded._id}&&studentId=${id}`
-      )
+      .get(`${config.baseUrl}/api/getstudentsById?studentId=${id}`)
       .then((res) => {
-        setFeeData(res.data?.findData?.fees);
-        setBackupFeeData(res.data?.findData?.fees);
         setStudent(res.data?.findData?.studentName);
       });
+  }, [id]);
+
+  useEffect(() => {
+    axios.get(`${config.baseUrl}/api/getfee?studentId=${id}`).then((res) => {
+      setFeeData(res.data?.data);
+      setBackupFeeData(res.data?.data);
+    });
   }, [id, isFeeAdded, isFeeDeleted, student == undefined]);
 
   useEffect(() => {
@@ -116,7 +113,6 @@ const AdminDashboard = () => {
         showDelete={showDelete}
         setIsFeeDeleted={setIsFeeDeleted}
         isFeeDeleted={isFeeDeleted}
-        studentId={id}
         feeid={feeid}
       />
 

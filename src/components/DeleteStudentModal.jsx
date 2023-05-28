@@ -16,15 +16,8 @@ function Example({
   const handleDelete = () => {
     handleDeleteClose();
 
-    let decoded;
-    if (typeof window !== "undefined") {
-      decoded = JSON.parse(localStorage.getItem("user"));
-    }
-
     axios
-      .delete(
-        `${config.baseUrl}/api/deletestudentById?userid=${decoded._id}&&studentId=${studentId}`
-      )
+      .delete(`${config.baseUrl}/api/deletestudentById?studentId=${studentId}`)
       .then((res) => {
         console.log(res.data);
         toast.success("Deleted !");

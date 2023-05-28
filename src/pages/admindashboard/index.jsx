@@ -30,7 +30,7 @@ const AdminDashboard = () => {
   let options = [{ value: "All", label: "All" }];
 
   totalStudentData?.map((ele) => {
-    options.push({ value: ele.class, label: ele.class });
+    options.push({ value: ele.cls, label: ele.cls });
   });
 
   const uniqueIds = [];
@@ -48,14 +48,9 @@ const AdminDashboard = () => {
   });
 
   useEffect(() => {
-    let decoded;
-    if (typeof window !== "undefined") {
-      decoded = JSON.parse(localStorage.getItem("user"));
-    }
     axios
       .get(
-        `${config.baseUrl}/api/getstudentsByUserId?userid=${
-          decoded._id
+        `${config.baseUrl}/api/getstudentsByUserId?
         }&&limit=${10}&&page=${page}`
       )
       .then((res) => {
@@ -87,7 +82,7 @@ const AdminDashboard = () => {
       setTotalStudent(BackupLength);
     } else {
       const filteredData = totalStudentData.filter((ele) =>
-        ele.class.toLowerCase().includes(val.value.toLowerCase())
+        ele.cls.toLowerCase().includes(val.value.toLowerCase())
       );
 
       setStudentData(filteredData);

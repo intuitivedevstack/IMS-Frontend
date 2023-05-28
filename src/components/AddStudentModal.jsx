@@ -21,30 +21,22 @@ console.log(decoded);
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const schema = yup
-  .object({
-    studentName: yup.string().required("Student Name is a required field"),
-    parentName: yup.string().required("Parent Name is a required field"),
-    studentNumber: yup
-      .string()
-      .trim()
-      .required("Student Number is a required field")
-      .matches(phoneRegExp, "Phone number is not valid")
-      .min(10, "too short")
-      .max(10, "too long"),
+const schema = yup.object({
+  studentName: yup.string().required("Student Name is a required field"),
+  parentName: yup.string().required("Parent Name is a required field"),
+  studentNumber: yup.string(),
 
-    parentNumber: yup
-      .string()
-      .trim()
-      .required("Parent Number is a required field")
-      .matches(phoneRegExp, "Phone number is not valid")
-      .min(10, "too short")
-      .max(10, "too long"),
-    class: yup.string().required("Class or Course Name is a required field"),
-    rollNumber: yup.string().required("Roll Number is a required field"),
-    address: yup.string().required("Address is a required field"),
-  })
-  .required();
+  parentNumber: yup
+    .string()
+    .trim()
+    .required("Parent Number is a required field")
+    .matches(phoneRegExp, "Phone number is not valid")
+    .min(10, "too short")
+    .max(10, "too long"),
+  cls: yup.string().required("Class or Course Name is a required field"),
+  rollNumber: yup.string().required("Roll Number is a required field"),
+  address: yup.string().required("Address is a required field"),
+});
 
 const Index = ({
   handleClose,
@@ -72,13 +64,8 @@ const Index = ({
     data.studentName = data.studentName.trim();
     data.parentNumber = data.parentNumber.trim();
 
-    let resultant = { ...data };
-
     axios
-      .post(`${config.baseUrl}/api/students`, {
-        userid: decoded._id,
-        studentdetails: resultant,
-      })
+      .post(`${config.baseUrl}/api/students`, data)
       .then((res) => {
         reset();
         setShow(false);
@@ -137,18 +124,13 @@ const Index = ({
                 {...register("studentNumber")}
               />
               <p style={{ color: "red" }}>{errors.studentNumber?.message}</p>
-
-              <p style={{ color: "#3c3973" }}>
-                In case, student does not have personal number, you can type
-                their parent number same as Above
-              </p>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
                 type="text"
                 placeholder="Enter Class or Course Name"
-                {...register("class")}
+                {...register("cls")}
               />
               <p style={{ color: "red" }}>{errors.class?.message}</p>
             </Form.Group>

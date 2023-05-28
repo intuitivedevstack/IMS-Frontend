@@ -77,7 +77,7 @@ const FeeTables = ({ handleDeleteShow, feeData }) => {
               <td>
                 <BsFillTrashFill
                   cursor={"pointer"}
-                  onClick={() => handleDeleteShow(ele.id)}
+                  onClick={() => handleDeleteShow(ele._id)}
                 />
               </td>
             </tr>

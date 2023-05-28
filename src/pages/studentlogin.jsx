@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -45,26 +44,11 @@ export default function Login() {
     data.name = data.name.trim();
 
     let user;
-    let userid;
     user = StudentData.find((ele) => {
-      userid = ele.userid;
-      return ele.students.find((ele) => {
-        return (
-          ele.parentNumber == String(data.parent_number) &&
-          ele.studentName.toLowerCase() == data.name.toLowerCase()
-        );
-      });
+      return ele.parentNumber == data.parent_number;
     });
 
-    let userData = user.students.find((ele) => {
-      return (
-        ele.parentNumber == String(data.parent_number) &&
-        ele.studentName == data.name
-      );
-    });
-
-    localStorage.setItem("studentData", JSON.stringify(userData));
-    localStorage.setItem("userid", JSON.stringify(userid));
+    localStorage.setItem("studentData", JSON.stringify(user));
 
     if (user) {
       setLoading(false);
@@ -76,7 +60,7 @@ export default function Login() {
   };
 
   useEffect(() => {
-    axios.get(`${config.baseUrl}/api/students`).then((res) => {
+    axios.get(`${config.baseUrl}/api/getstudentsByUserId`).then((res) => {
       setStudentData(res.data.data);
     });
   }, []);

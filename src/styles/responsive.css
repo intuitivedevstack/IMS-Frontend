@@ -23,6 +23,10 @@
     margin-top: 10px !important;
   }
 
+  .msg-sm-btn {
+    margin-bottom: 18px;
+  }
+
   .enroll-btn {
     order: 1;
   }

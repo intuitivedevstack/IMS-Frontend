@@ -8,6 +8,7 @@ import config from "@/utils/config";
 import { toast } from "react-hot-toast";
 import { Spinner } from "react-bootstrap";
 import Footer from "@/components/footer.jsx";
+import Pagination from "react-bootstrap/Pagination";
 
 const AdminDashboard = () => {
   const { push } = useRouter();
@@ -16,28 +17,62 @@ const AdminDashboard = () => {
   const [isUpload, setIsUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
+  const [pdfdata, setPdfData] = useState(null);
+  const [msg, setMsg] = useState("");
+  const [fees, setFees] = useState([]);
 
-  let studentData;
-  let userid;
-  if (typeof window !== "undefined") {
-    studentData = JSON.parse(localStorage.getItem("studentData"));
-    userid = JSON.parse(localStorage.getItem("userid"));
+  const [page, setPage] = useState(1);
+
+  const resultantData = fees?.slice((page - 1) * 10, page * 10);
+
+  const hanldePage = (page) => {
+    setPage(page);
+  };
+
+  let active = page;
+  let items = [];
+  for (let number = 1; number <= Math.ceil(fees?.length / 10); number++) {
+    items.push(
+      <Pagination.Item
+        key={number}
+        active={number === active}
+        onClick={() => hanldePage(number)}
+      >
+        {number}
+      </Pagination.Item>
+    );
   }
 
-  const pdfurl = `data:application/pdf;base64,${studentData?.pdf?.data}`;
+  let studentData;
+  if (typeof window !== "undefined") {
+    studentData = JSON.parse(localStorage.getItem("studentData"));
+  }
+
+  const pdfurl = `data:application/pdf;base64,${pdfdata?.data}`;
 
   useEffect(() => {
     axios
-      .get(
-        `${config.baseUrl}/api/getstudentsById?userid=${userid}&&studentId=${studentData.id}`
-      )
+      .get(`${config.baseUrl}/api/getfee?studentId=${studentData._id}`)
       .then((res) => {
-        setData(res.data.findData?.photo?.data);
+        setFees(res.data?.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [studentData?.id, userid, isUpload]);
+  }, [studentData?._id]);
+
+  useEffect(() => {
+    axios
+      .get(`${config.baseUrl}/api/getfile?studentId=${studentData._id}`)
+      .then((res) => {
+        setData(res.data.data?.photo?.data);
+        setPdfData(res.data.data?.pdf);
+        setMsg(res.data.data?.msg);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [studentData?._id, isUpload]);
 
   const handleUpload = (e) => {
     setLoading(true);
@@ -48,7 +83,7 @@ const AdminDashboard = () => {
 
     axios
       .post(
-        `${config.baseUrl}/api/uploadphoto?userid=${userid}&&studentId=${studentData.id}`,
+        `${config.baseUrl}/api/uploadphoto?studentId=${studentData._id}`,
         formData
       )
       .then(() => {
@@ -64,7 +99,7 @@ const AdminDashboard = () => {
   };
 
   const handleLogout = () => {
-    push("/");
+    push("/studentlogin");
   };
 
   useEffect(() => {
@@ -149,7 +184,7 @@ const AdminDashboard = () => {
 
                   <div>
                     <strong>Class</strong>
-                    <span> {studentData.class}</span>
+                    <span> {studentData.cls}</span>
                   </div>
 
                   <div>
@@ -180,6 +215,25 @@ const AdminDashboard = () => {
                 </div>
               </div>
 
+              <div className="msg-div mt-4">
+                <strong className="ms-2">Message</strong>
+                <p className="ms-2">{msg}</p>
+                {pdfdata != null && (
+                  <p className="ms-2">
+                    Please Download the File
+                    <a
+                      href={pdfurl}
+                      target="_blank"
+                      download={pdfdata?.fileName}
+                      rel="noopener noreferrer"
+                      className="ms-2"
+                    >
+                      {pdfdata?.fileName}
+                    </a>
+                  </p>
+                )}
+              </div>
+
               <Table striped bordered hover responsive="md" className="mt-4">
                 <thead>
                   <tr>
@@ -195,8 +249,8 @@ const AdminDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {studentData.fees?.map((ele) => (
-                    <tr key={ele.id}>
+                  {resultantData?.map((ele) => (
+                    <tr key={ele._id}>
                       <td>{ele.tuition_fee + " rs"}</td>
                       <td>
                         {ele.transport_fee != "" && ele.transport_fee + " rs"}
@@ -233,23 +287,8 @@ const AdminDashboard = () => {
                 </tbody>
               </Table>
 
-              <div className="msg-div mt-4">
-                <strong className="ms-2">Message</strong>
-                <p className="ms-2">{studentData.msg}</p>
-                {studentData.pdf != undefined && (
-                  <p className="ms-2">
-                    Please Download the File
-                    <a
-                      href={pdfurl}
-                      target="_blank"
-                      download={studentData?.pdf?.fileName}
-                      rel="noopener noreferrer"
-                      className="ms-2"
-                    >
-                      {studentData?.pdf?.fileName}
-                    </a>
-                  </p>
-                )}
+              <div className="d-flex justify-content-end">
+                <Pagination size="sm">{items}</Pagination>
               </div>
             </div>
           </section>

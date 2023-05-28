@@ -12,13 +12,6 @@ import { Spinner } from "react-bootstrap";
 import { BsCalendarDate } from "react-icons/bs";
 import DatePicker from "react-datepicker";
 
-let decoded;
-if (typeof window !== "undefined") {
-  decoded = JSON.parse(localStorage.getItem("user"));
-}
-
-console.log(decoded);
-
 const schema = yup.object({
   paid_amount: yup.string().required("Amount is a required field"),
   paid_month: yup.string().required("Paid Month is a required field"),
@@ -74,10 +67,7 @@ const Index = ({
     data.payment_status = String(Math.floor(per)) + "%";
 
     axios
-      .post(
-        `${config.baseUrl}/api/postfee?userid=${decoded._id}&&studentId=${studentId}`,
-        data
-      )
+      .post(`${config.baseUrl}/api/postfee?studentId=${studentId}`, data)
       .then((res) => {
         reset();
         setShow(false);
