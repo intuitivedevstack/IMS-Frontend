@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: "http://localhost:4000",
+  baseUrl: "https://demo-intuitivedevstack.vercel.app",
 };
 
 export default config;
