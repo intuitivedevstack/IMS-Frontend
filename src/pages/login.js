@@ -53,8 +53,22 @@ export default function Login() {
       )}
       <div className="two-sec">
         <div className="left-sec">
-          <div className="login-img-wrapper d-flex justify-content-center align-items-center">
-            <Image src={management} alt="img" height={220} width={220} />
+          <div className="login-img-wrapper d-flex justify-content-center align-items-center flex-column">
+            <Image
+              src={management}
+              alt="img"
+              height={120}
+              width={120}
+              style={{ borderRadius: "30%" }}
+            />
+
+            <h4 style={{ color: "white" }} className="mt-5">
+              Institute management
+            </h4>
+
+            <h4 style={{ color: "white" }} className="mt-1">
+              System
+            </h4>
           </div>
         </div>
         <div className="right-sec">
@@ -117,7 +131,7 @@ export default function Login() {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

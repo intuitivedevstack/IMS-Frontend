@@ -183,20 +183,20 @@
 }
 
 @media (max-width: 1024px) {
-  .left-sec {
+  /* .left-sec {
     width: 100%;
     height: 40vh;
-  }
+  } */
 
   .box {
     display: none;
   }
 
-  .right-sec {
+  /* .right-sec {
     width: 100%;
     align-items: flex-start;
     margin-top: 30px;
-  }
+  } */
   .login-img-wrapper {
     height: calc(40vh - 165px);
   }

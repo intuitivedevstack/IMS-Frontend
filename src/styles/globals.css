@@ -1,3 +1,5 @@
+@import "rsuite/dist/rsuite.css";
+
 :root {
   --primaryColor: #f5f5f7;
 }
@@ -201,28 +203,20 @@ input.form-check-input {
 .submit:hover,
 .submit:focus {
   padding: 3px 35px;
-  background: #2f2f2f;
+  background: #645bdc;
   color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
   border-radius: 8px;
+  border: 1px solid #645bdc !important;
 }
 
 /* login page css */
 .two-sec {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
 }
-.left-sec {
-  background: rgb(77 28 115 / 33%);
-  width: 40%;
-  height: 100vh;
-  position: relative;
-  /* box-shadow: inset 0 0 0 768px rgb(77 28 115 / 33%);
-  background-size: cover;
-  background-position: 69% 190px;
-  background-repeat: no-repeat; */
-}
+
 .login-logo {
   margin-left: 25px;
   margin-top: 25px;
@@ -230,7 +224,7 @@ input.form-check-input {
 .login-img-wrapper {
   position: relative;
   width: 100%;
-  height: calc(100vh - 165px);
+  height: calc(100vh - 508px);
   border-radius: 50% !important;
 }
 .image-login {
@@ -241,13 +235,7 @@ input.form-check-input {
   width: 50%;
   transform: translateX(-50%);
 }
-.right-sec {
-  width: 60%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .right-content {
   width: 500px;
 }
@@ -952,4 +940,111 @@ section.right-cnt {
   .footer__nav {
     flex: 2 0px;
   }
+}
+
+.two-sec {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  background-color: #0c1a55;
+  height: 100vh !important;
+}
+
+.two-sec > div {
+  /* height: 200px; */
+  /* width: 200px; */
+}
+
+.left-sec {
+  width: 30%;
+  height: 52%;
+  background-color: #655cdd;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.left-sec1 {
+  width: 30%;
+  height: 78%;
+  background-color: #655cdd;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.right-sec {
+  background-color: #ffff;
+  padding: 30px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.login-img-wrapper1 {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 320px);
+  border-radius: 50% !important;
+}
+
+.rs-sidenav-nav > a {
+  background-color: #645bdc !important;
+  color: white !important;
+}
+
+.rs-sidenav-toggle {
+  background-color: #645bdc !important;
+}
+
+.rs-sidenav-toggle > button {
+  background-color: #645bdc !important;
+  color: white !important;
+}
+
+.rs-sidenav-body {
+  background-color: #645bdc !important;
+}
+
+.rs-sidenav-default {
+  background-color: #645bdc !important;
+}
+
+.main-side-div {
+  position: fixed !important;
+}
+
+.header {
+  margin-left: 240px !important;
+}
+
+.header1 {
+  margin-left: 56px !important;
+}
+
+.icon-dev {
+  cursor: pointer !important;
+}
+
+.search-nav {
+  position: relative !important;
+  right: 40px !important;
+}
+
+.icon-enr {
+  position: relative !important;
+  right: 38px !important;
+}
+
+.spn {
+  position: relative !important;
+  right: 20px !important;
+}
+
+.fnt {
+  font-size: 25px !important;
+}
+
+.rs-sidenav-default .rs-sidenav-item,
+.rs-sidenav-default .rs-dropdown-toggle,
+.rs-sidenav-default .rs-sidenav-toggle-button {
+  background-color: #645bdc !important;
+  color: white !important;
 }

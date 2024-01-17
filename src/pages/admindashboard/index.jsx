@@ -11,6 +11,8 @@ import Select from "react-select";
 import config from "@/utils/config";
 import Footer from "@/components/footer";
 import Link from "next/link";
+import SideNav from "../../components/SideNav";
+import Header from "@/components/Header";
 
 const AdminDashboard = () => {
   const { push } = useRouter();
@@ -119,24 +121,25 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <AddStudentModal
+      <SideNav />
+      {/* <AddStudentModal
         show={show}
         handleClose={handleClose}
         setShow={setShow}
         setIsStudentAdded={setIsStudentAdded}
         isStudentAdded={isStudentAdded}
         isStudentDeleted={isStudentDeleted}
-      />
+      /> */}
 
-      <DeleteStudentModal
+      {/* <DeleteStudentModal
         handleDeleteClose={handleDeleteClose}
         showDelete={showDelete}
         studentId={studentId}
         setIsStudentDeleted={setIsStudentDeleted}
         isStudentDeleted={isStudentDeleted}
-      />
+      /> */}
 
-      <div className="page-container">
+      {/* <div className="page-container">
         <div className="page-layout row">
           <div className="left-cnt col-1 mx-auto">
             <div className="logo first">IM</div>
@@ -173,6 +176,8 @@ const AdminDashboard = () => {
               </li>
             </ul>
           </div>
+
+         
 
           <section className="right-cnt col-11 row mx-auto">
             <div className="middle-sec col ms-md-3">
@@ -397,9 +402,9 @@ const AdminDashboard = () => {
             </div>
           </section>
         </div>
-      </div>
+      </div> */}
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
