@@ -10,6 +10,8 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { RiMessageFill } from "react-icons/ri";
 import { GrLogout } from "react-icons/gr";
 import MagicIcon from "@rsuite/icons/legacy/Magic";
+import { MdManageAccounts } from "react-icons/md";
+import { FaBookOpen } from "react-icons/fa";
 
 const App = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -80,8 +82,17 @@ const App = () => {
 
               <Nav.Menu
                 eventKey="3"
-                title="Student Management"
-                icon={<MagicIcon />}
+                title={
+                  <span style={{ position: "relative", right: "20px" }}>
+                    Management
+                  </span>
+                }
+                icon={
+                  <MdManageAccounts
+                    fontSize={25}
+                    style={{ position: "relative", right: "40px" }}
+                  />
+                }
                 className="menu-man"
               >
                 <Nav.Item eventKey="3-1" style={{ color: "white" }}>
@@ -94,8 +105,17 @@ const App = () => {
 
               <Nav.Menu
                 eventKey="3"
-                title="Examination"
-                icon={<MagicIcon />}
+                title={
+                  <span style={{ position: "relative", right: "20px" }}>
+                    Examination
+                  </span>
+                }
+                icon={
+                  <FaBookOpen
+                    fontSize={25}
+                    style={{ position: "relative", right: "40px" }}
+                  />
+                }
                 className="menu-man"
               >
                 <Nav.Item eventKey="3-1" style={{ color: "white" }}>

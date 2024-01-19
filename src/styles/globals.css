@@ -986,25 +986,25 @@ section.right-cnt {
 }
 
 .rs-sidenav-nav > a {
-  background-color: #645bdc !important;
+  background-color: #302e81 !important;
   color: white !important;
 }
 
 .rs-sidenav-toggle {
-  background-color: #645bdc !important;
+  background-color: #302e81 !important;
 }
 
 .rs-sidenav-toggle > button {
-  background-color: #645bdc !important;
+  background-color: #302e81 !important;
   color: white !important;
 }
 
 .rs-sidenav-body {
-  background-color: #645bdc !important;
+  background-color: #302e81 !important;
 }
 
 .rs-sidenav-default {
-  background-color: #645bdc !important;
+  background-color: #302e81 !important;
 }
 
 .main-side-div {
@@ -1045,6 +1045,25 @@ section.right-cnt {
 .rs-sidenav-default .rs-sidenav-item,
 .rs-sidenav-default .rs-dropdown-toggle,
 .rs-sidenav-default .rs-sidenav-toggle-button {
-  background-color: #645bdc !important;
+  background-color: #302e81 !important;
   color: white !important;
+}
+
+.goal-chakli {
+  width: 100px;
+  height: 100px;
+  background-color: #d9bcba;
+  border-radius: 50%;
+  position: relative;
+}
+
+.dot {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
