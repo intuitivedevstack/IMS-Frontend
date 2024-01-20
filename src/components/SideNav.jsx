@@ -124,6 +124,18 @@ const App = () => {
                 <Nav.Item eventKey="3-2" style={{ color: "white" }}>
                   Result
                 </Nav.Item>
+                <Nav.Item eventKey="3-1" style={{ color: "white" }}>
+                  Admit Card
+                </Nav.Item>
+                <Nav.Item eventKey="3-2" style={{ color: "white" }}>
+                  Result
+                </Nav.Item>
+                <Nav.Item eventKey="3-1" style={{ color: "white" }}>
+                  Admit Card
+                </Nav.Item>
+                <Nav.Item eventKey="3-2" style={{ color: "white" }}>
+                  Result
+                </Nav.Item>
               </Nav.Menu>
 
               <Nav.Item eventKey="10">

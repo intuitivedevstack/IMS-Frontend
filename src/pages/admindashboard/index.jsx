@@ -15,6 +15,7 @@ import SideNav from "../../components/SideNav";
 import Header from "@/components/Header";
 import { FaMale } from "react-icons/fa";
 import { FaFemale } from "react-icons/fa";
+import Chart from "../../components/Chart";
 
 const AdminDashboard = () => {
   const { push } = useRouter();
@@ -135,6 +136,7 @@ const AdminDashboard = () => {
               width: "30%",
               padding: "25px 30px 25px 30px",
               borderRadius: "8px",
+              height: "270px",
             }}
           >
             <div style={{ display: "flex", justifyContent: "end" }}>
@@ -206,26 +208,30 @@ const AdminDashboard = () => {
 
           <section
             style={{
-              background: "#302E81",
+              background: "#F0F9FD",
               color: "white",
               width: "30%",
               padding: "25px 30px 25px 30px",
               borderRadius: "8px",
               marginLeft: "18px",
-              display: "",
             }}
           >
-            <div className="mt-4">
-              <h1 style={{ fontSize: "bold" }}>24</h1>
-              <p style={{ position: "relative", bottom: "10px" }}>
-                Total Course
-              </p>
-            </div>
+            <p
+              style={{
+                position: "relative",
+                bottom: "7px",
+                float: "right",
+                color: "black",
+              }}
+            >
+              (Students Volume course wise)
+            </p>
 
-            <div>
-              <div class="goal-chakli">
-                <div class="dot"></div>
-              </div>
+            <div
+              style={{ height: "200px", position: "relative", left: "45px" }}
+              className="mx-auto"
+            >
+              <Chart />
             </div>
           </section>
         </main>
