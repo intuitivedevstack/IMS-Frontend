@@ -608,7 +608,7 @@ section.right-cnt {
   justify-content: center;
 }
 .search-input {
-  flex: 1;
+  /* flex: 1; */
 }
 .rightsidemydoctor {
   /* height: 100px; */
@@ -1066,4 +1066,9 @@ section.right-cnt {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.section-search {
+  display: flex !important;
+  justify-content: space-between !important;
 }

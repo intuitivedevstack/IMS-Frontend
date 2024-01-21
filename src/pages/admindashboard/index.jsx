@@ -16,6 +16,8 @@ import Header from "@/components/Header";
 import { FaMale } from "react-icons/fa";
 import { FaFemale } from "react-icons/fa";
 import Chart from "../../components/Chart";
+import Table from "../../components/DashboardTable";
+import SearchBar from "@/components/SearchS";
 
 const AdminDashboard = () => {
   const { push } = useRouter();
@@ -234,6 +236,19 @@ const AdminDashboard = () => {
               <Chart />
             </div>
           </section>
+        </main>
+
+        <main style={{ padding: "3.5%" }}>
+          <section className="section-search">
+            <div>
+              <h4 className="mb-4">All Students Enrolled </h4>
+            </div>
+            <div>
+              <SearchBar />
+            </div>
+          </section>
+
+          <Table />
         </main>
       </div>
     </>
